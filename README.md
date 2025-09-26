@@ -125,12 +125,11 @@ License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-Author
-
+Author :-
 Aman Kumar
 
-  - GitHub: [@yourusername](https://github.com/yourusername)
-  - LinkedIN: yourportfolio.com
+  - GitHub: [@YukiCodepth](https://github.com/YukiCodepth)
+  - LinkedIn: https://www.linkedin.com/in/aman-kumar-429086299/
   - Email: iamankr886@gmail.com
 
 Acknowledgments
