@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSync Pro - AI Learning Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+    <button class="reset-btn" onclick="resetAllData()">🔄 Reset Data</button>
+
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <div class="logo-main">SkillSync Pro</div>
+                <div class="logo-subtitle">AI-Powered Learning</div>
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="#dashboard" class="nav-item active">📊 Dashboard</a>
+                <a href="#code-analysis" class="nav-item">💻 Code Intelligence</a>
+                <a href="#diagram-generator" class="nav-item">📐 Diagram Generator</a>
+                <a href="#presentation-maker" class="nav-item">🎤 Presentation Maker</a>
+                <a href="#interview-prep" class="nav-item">💼 Interview Prep</a>
+                <a href="#smart-coach" class="nav-item">🤖 Smart Coach</a>
+                <a href="#play-learn" class="nav-item">🎮 Play & Learn</a>
+                <a href="#engineering-tests" class="nav-item">⚡ Engineering Tests</a>
+                <a href="#resume-builder" class="nav-item">📄 Resume Builder</a>
+                <a href="#document-ai" class="nav-item">🔍 Document AI</a>
+                <a href="#skill-matrix" class="nav-item">📈 Skill Matrix</a>
+            </nav>
+
+            <button class="theme-toggle" onclick="toggleTheme()">🌓 Toggle Theme</button>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header class="header">
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Ask anything about learning...">
+                    <button class="ai-scan-btn" onclick="handleSearch()">🔍 AI Search</button>
+                </div>
+                <div class="user-profile">
+                    <div class="profile-menu" onclick="toggleProfileDropdown()">
+                        <img id="profileImage" class="profile-pic" alt="Profile" style="display: none;">
+                        <span id="userName">Guest</span>
+                        <div class="profile-dropdown" id="profileDropdown">
+                            <div class="profile-option" onclick="showLoginModal()">📧 Sign In</div>
+                            <div class="profile-option" onclick="createGuestAccount()">👤 Continue as Guest</div>
+                            <div class="profile-option" onclick="changeProfilePhoto()">🖼️ Change Photo</div>
+                            <div class="profile-option" onclick="exportAllData()">📤 Export Data</div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard -->
+            <section id="dashboard" class="content-section active">
+                <div class="dashboard-welcome">
+                    <h2>Welcome to SkillSync Pro</h2>
+                    <p>AI-powered learning platform with intelligent features</p>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Skills Mastered</h3>
+                        <div class="stat-value" id="skillsImproved">0</div>
+                        <div class="stat-progress" id="skillsProgress">Start learning!</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Badges Earned</h3>
+                        <div class="stat-value" id="badgesEarned">0</div>
+                        <div class="stat-progress" id="badgesProgress">Complete challenges</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>AI Sessions</h3>
+                        <div class="stat-value" id="aiSessions">0</div>
+                        <div class="stat-progress" id="sessionsProgress">Get started</div>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <button class="action-btn" onclick="showSection('code-analysis')">
+                        <span>💻</span> Code Analysis
+                    </button>
+                    <button class="action-btn" onclick="showSection('diagram-generator')">
+                        <span>📐</span> Diagram Generator
+                    </button>
+                    <button class="action-btn" onclick="showSection('presentation-maker')">
+                        <span>🎤</span> Presentation Maker
+                    </button>
+                    <button class="action-btn" onclick="showSection('interview-prep')">
+                        <span>💼</span> Interview Prep
+                    </button>
+                    <button class="action-btn" onclick="showSection('smart-coach')">
+                        <span>🤖</span> Smart Coach
+                    </button>
+                    <button class="action-btn" onclick="showSection('play-learn')">
+                        <span>🎮</span> Play & Learn
+                    </button>
+                    <button class="action-btn" onclick="showSection('engineering-tests')">
+                        <span>⚡</span> Engineering Tests
+                    </button>
+                    <button class="action-btn" onclick="showSection('resume-builder')">
+                        <span>📄</span> Resume Builder
+                    </button>
+                </div>
+            </section>
+
+            <!-- Code Intelligence -->
+            <section id="code-analysis" class="content-section">
+                <div class="code-editor-container">
+                    <h2>💻 Code Intelligence</h2>
+                    <textarea id="codeInput" placeholder="Paste your JavaScript, Python, or HTML code here..."></textarea>
+                    <button onclick="analyzeCode()" class="analyze-btn">🚀 Analyze Code</button>
+                    <div id="codeResults" class="results-panel"></div>
+                </div>
+            </section>
+
+            <!-- Diagram Generator -->
+            <section id="diagram-generator" class="content-section">
+                <div class="section-content">
+                    <h2>📐 ERASER.IO Style Diagram Generator</h2>
+                    <div class="feature-card">
+                        <h3>Generate Visual Diagrams from Code</h3>
+                        <textarea id="diagramCode" placeholder="Paste your code to generate architecture diagram..." style="width: 100%; height: 150px; padding: 15px; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(255,255,255,0.05); color: var(--text-primary);"></textarea>
+                        <button onclick="generateDiagram()" class="analyze-btn">Generate Diagram</button>
+                        <div class="diagram-canvas" id="diagramCanvas">
+                            Diagram will appear here...
+                        </div>
+                        <button onclick="exportDiagram()" class="analyze-btn" style="background: var(--success-color);">📥 Export Diagram</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Presentation Maker -->
+            <section id="presentation-maker" class="content-section">
+                <div class="section-content">
+                    <h2>🎤 AI Presentation Maker</h2>
+                    <div class="feature-card">
+                        <h3>Create Complete Presentation Slides</h3>
+                        <input type="text" id="presentationTopic" placeholder="Enter presentation topic (e.g., Machine Learning Basics)" style="width: 100%; padding: 15px; margin: 10px 0; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(255,255,255,0.05); color: var(--text-primary);">
+                        <button onclick="generateCompletePresentation()" class="analyze-btn">Generate Full Presentation</button>
+                        <div id="presentationOutput" style="margin-top: 20px; padding: 20px; background: rgba(255,255,255,0.03); border-radius: 12px; white-space: pre-wrap; font-family: inherit;"></div>
+                        <button onclick="exportPresentation()" class="analyze-btn" style="background: var(--success-color); margin-top: 15px;">📥 Export as PDF</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Interview Preparation -->
+            <section id="interview-prep" class="content-section">
+                <div class="section-content">
+                    <h2>💼 AI Interview Coach</h2>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h3>Technical Questions</h3>
+                            <select id="techDomain" style="width: 100%; padding: 12px; margin: 10px 0; border-radius: 10px; border: 1px solid var(--glass-border); background: rgba(255,255,255,0.05); color: var(--text-primary);">
+                                <option value="javascript">JavaScript</option>
+                                <option value="python">Python</option>
+                                <option value="react">React</option>
+                                <option value="nodejs">Node.js</option>
+                                <option value="dsa">Data Structures</option>
+                            </select>
+                            <button onclick="generateInterviewQuestions()" class="analyze-btn">Generate Questions</button>
+                            <div id="interviewOutput" style="margin-top: 15px; white-space: pre-wrap;"></div>
+                        </div>
+                        <div class="feature-card">
+                            <h3>Behavioral Questions</h3>
+                            <button onclick="generateBehavioralQuestions()" class="analyze-btn">Practice Now</button>
+                            <div id="behavioralOutput" style="margin-top: 15px; white-space: pre-wrap;"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Smart Coach -->
+            <section id="smart-coach" class="content-section">
+                <div class="section-content">
+                    <h2>🤖 AI Smart Coach</h2>
+                    <div class="feature-card">
+                        <h3>Personalized Learning Path</h3>
+                        <textarea id="coachGoal" placeholder="What skill do you want to master? (e.g., Web Development, Data Science)" style="width: 100%; height: 100px; padding: 15px; margin: 10px 0; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(255,255,255,0.05); color: var(--text-primary);"></textarea>
+                        <button onclick="generateLearningPath()" class="analyze-btn">Get Learning Plan</button>
+                        <div id="coachOutput" style="margin-top: 15px; white-space: pre-wrap;"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Play & Learn -->
+            <section id="play-learn" class="content-section">
+                <div class="section-content">
+                    <h2>🎮 Play & Learn</h2>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h3>Interactive Quiz</h3>
+                            <div id="quizContainer">
+                                <div id="quizQuestion" style="font-size: 18px; margin-bottom: 20px;"></div>
+                                <div id="quizOptions"></div>
+                                <button onclick="nextQuestion()" class="analyze-btn">Start Quiz</button>
+                                <div id="quizScore" style="margin-top: 15px;"></div>
+                            </div>
+                        </div>
+                        <div class="feature-card">
+                            <h3>Your Achievements</h3>
+                            <div id="badgesContainer"></div>
+                            <div id="certificatesContainer" style="margin-top: 20px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Engineering Tests -->
+            <section id="engineering-tests" class="content-section">
+                <div class="section-content">
+                    <h2>⚡ Engineering Tests</h2>
+                    <div class="feature-card">
+                        <h3>Comprehensive Test Series</h3>
+                        <select id="testSubject" style="width: 100%; padding: 12px; margin: 10px 0; border-radius: 10px; border: 1px solid var(--glass-border); background: rgba(255,255,255,0.05); color: var(--text-primary);">
+                            <option value="dsa">Data Structures & Algorithms</option>
+                            <option value="webdev">Web Development</option>
+                            <option value="database">Database Systems</option>
+                            <option value="systemdesign">System Design</option>
+                        </select>
+                        <button onclick="generateEngineeringTest()" class="analyze-btn">Generate Test</button>
+                        <div id="testOutput" style="margin-top: 15px; white-space: pre-wrap;"></div>
+                        <button onclick="generateCertificate()" class="analyze-btn" style="background: var(--success-color); margin-top: 15px;">🎓 Generate Certificate</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Resume Builder -->
+            <section id="resume-builder" class="content-section">
+                <div class="section-content">
+                    <h2>📄 Professional Resume Builder</h2>
+                    <div class="feature-card">
+                        <h3>Create Your Resume</h3>
+                        <div class="resume-form">
+                            <div class="form-group">
+                                <label>Full Name</label>
+                                <input type="text" id="resumeName" placeholder="John Doe">
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" id="resumeEmail" placeholder="john@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="tel" id="resumePhone" placeholder="+1 (555) 123-4567">
+                            </div>
+                            <div class="form-group">
+                                <label>Professional Title</label>
+                                <input type="text" id="resumeTitle" placeholder="Software Engineer">
+                            </div>
+                            <div class="form-group">
+                                <label>Skills (comma separated)</label>
+                                <input type="text" id="resumeSkills" placeholder="JavaScript, React, Node.js, Python">
+                            </div>
+                            <div class="form-group">
+                                <label>Experience</label>
+                                <textarea id="resumeExperience" placeholder="Describe your work experience..." rows="4"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Education</label>
+                                <textarea id="resumeEducation" placeholder="Your educational background..." rows="3"></textarea>
+                            </div>
+                        </div>
+                        <button onclick="generateResume()" class="analyze-btn">Generate Resume</button>
+                        <div id="resumeOutput" style="margin-top: 20px;"></div>
+                        <button onclick="exportResume()" class="analyze-btn" style="background: var(--success-color); margin-top: 15px;">📥 Download Resume PDF</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Document AI -->
+            <section id="document-ai" class="content-section">
+                <div class="section-content">
+                    <h2>🔍 Document AI Analyzer</h2>
+                    <div class="feature-card">
+                        <h3>Upload & Analyze Documents</h3>
+                        <input type="file" id="documentUpload" accept=".txt,.pdf,.docx,.doc" style="margin: 10px 0; padding: 10px; border: 1px dashed var(--glass-border); border-radius: 10px; width: 100%;">
+                        <button onclick="analyzeDocument()" class="analyze-btn">Analyze Document</button>
+                        <div id="documentOutput" style="margin-top: 15px; white-space: pre-wrap;"></div>
+                        <button onclick="exportSummary()" class="analyze-btn" style="background: var(--success-color); margin-top: 15px;">📥 Export Summary PDF</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skill Matrix -->
+            <section id="skill-matrix" class="content-section">
+                <div class="section-content">
+                    <h2>📈 Skill Matrix & Progress</h2>
+                    <div class="feature-card">
+                        <h3>Your Learning Progress</h3>
+                        <div id="skillMatrix"></div>
+                        <div style="margin-top: 20px;">
+                            <h4>Recent Achievements</h4>
+                            <div id="recentAchievements"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <h3>Welcome to SkillSync Pro</h3>
+            <input type="email" id="loginEmail" placeholder="Email" style="width: 100%; padding: 12px; margin: 10px 0; border-radius: 10px; border: 1px solid var(--glass-border); background: rgba(255,255,255,0.05); color: var(--text-primary);">
+            <input type="password" id="loginPassword" placeholder="Password" style="width: 100%; padding: 12px; margin: 10px 0; border-radius: 10px; border: 1px solid var(--glass-border); background: rgba(255,255,255,0.05); color: var(--text-primary);">
+            <button onclick="performLogin()" class="analyze-btn" style="width: 100%;">Sign In</button>
+            <button onclick="closeLoginModal()" style="background: transparent; border: none; color: var(--text-secondary); margin-top: 10px; cursor: pointer;">Cancel</button>
+        </div>
+    </div>
+
+    <input type="file" id="photoUpload" accept="image/*" style="display: none;">
+
+    <script src="renderer.js"></script>
+</body>
+</html>

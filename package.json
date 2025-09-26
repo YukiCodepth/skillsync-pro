@@ -1,0 +1,58 @@
+{
+  "name": "skillsync-pro",
+  "version": "2.0.0",
+  "description": "AI-Powered Learning Platform with Modern Apple-style Design",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "build-mac": "electron-builder --mac",
+    "build-win": "electron-builder --win",
+    "build-linux": "electron-builder --linux",
+    "dev": "electron . --enable-logging"
+  },
+  "build": {
+    "appId": "com.skillsync.pro",
+    "productName": "SkillSync Pro",
+    "copyright": "Copyright © 2024 SkillSync Pro",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!node_modules/electron",
+      "!dist",
+      "!build"
+    ],
+    "mac": {
+      "category": "public.app-category.education",
+      "icon": "assets/icon.icns",
+      "target": "dmg"
+    },
+    "win": {
+      "icon": "assets/icon.ico",
+      "target": "nsis"
+    },
+    "linux": {
+      "icon": "assets/icon.png",
+      "target": "AppImage"
+    }
+  },
+  "keywords": [
+    "education",
+    "ai",
+    "learning",
+    "skills",
+    "coding",
+    "interview",
+    "resume",
+    "presentation"
+  ],
+  "author": "SkillSync Pro Team",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^22.0.0",
+    "electron-builder": "^24.0.0"
+  },
+  "dependencies": {}
+}
